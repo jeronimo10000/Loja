@@ -7,9 +7,10 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 	public Connection getConnection() {
 		try {
-			return DriverManager.getConnection("jdbc:mysql://localhost/consultorio", "root", "mago");
+			return DriverManager.getConnection("jdbc:mysql://localhost:3306/consultorio", "root", "mago");
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
+
 }

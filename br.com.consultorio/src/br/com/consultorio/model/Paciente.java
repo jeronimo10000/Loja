@@ -6,13 +6,26 @@ public class Paciente {
 	private String rg;
 	private String cpf;
 
-	private SexoType sexo;
+	private String sexo;
 
 	private Endereco endereco;
 
 	private Contato contato;
 
-	public Paciente(long id, String nome, String rg, String cpf, SexoType sexo, Endereco endereco, Contato contato) {
+	public Paciente() {
+		super();
+	}
+
+	public Paciente(long id, String nome, String rg, String cpf, String sexo) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.rg = rg;
+		this.cpf = cpf;
+		this.sexo = sexo;
+	}
+
+	public Paciente(long id, String nome, String rg, String cpf, String sexo, Endereco endereco, Contato contato) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -21,13 +34,6 @@ public class Paciente {
 		this.sexo = sexo;
 		this.endereco = endereco;
 		this.contato = contato;
-	}
-
-	public Paciente(String nome, String rg, String cpf) {
-		super();
-		this.nome = nome;
-		this.rg = rg;
-		this.cpf = cpf;
 	}
 
 	public long getId() {
@@ -62,11 +68,37 @@ public class Paciente {
 		this.cpf = cpf;
 	}
 
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public Contato getContato() {
+		return contato;
+	}
+
+	public void setContato(Contato contato) {
+		this.contato = contato;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((contato == null) ? 0 : contato.hashCode());
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
@@ -83,10 +115,20 @@ public class Paciente {
 		if (getClass() != obj.getClass())
 			return false;
 		Paciente other = (Paciente) obj;
+		if (contato == null) {
+			if (other.contato != null)
+				return false;
+		} else if (!contato.equals(other.contato))
+			return false;
 		if (cpf == null) {
 			if (other.cpf != null)
 				return false;
 		} else if (!cpf.equals(other.cpf))
+			return false;
+		if (endereco == null) {
+			if (other.endereco != null)
+				return false;
+		} else if (!endereco.equals(other.endereco))
 			return false;
 		if (id != other.id)
 			return false;
@@ -100,7 +142,10 @@ public class Paciente {
 				return false;
 		} else if (!rg.equals(other.rg))
 			return false;
-		if (sexo != other.sexo)
+		if (sexo == null) {
+			if (other.sexo != null)
+				return false;
+		} else if (!sexo.equals(other.sexo))
 			return false;
 		return true;
 	}
@@ -114,4 +159,5 @@ public class Paciente {
 		return builder.toString();
 	}
 
+	
 }
