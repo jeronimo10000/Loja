@@ -42,6 +42,27 @@ public class PacienteDao {
 		
 	}
 	
+	public void atualiza(Paciente paciente){
+		String sql = "UPDATE paciente SET id=?, nome=?, rg=?, cpf=?, sexo=? where id=?";
+		
+		try{
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setLong(1,paciente.getId());
+			stmt.setString(2,paciente.getNome());
+			stmt.setString(3,paciente.getRg());
+			stmt.setString(4, paciente.getCpf());
+			stmt.setString(5, paciente.getSexo());
+			stmt.setLong(6,paciente.getId());
+			
+			stmt.executeUpdate();
+			stmt.close();
+			
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+	}
+	
 	public List<Paciente> getLista(){
 		
 		try {
