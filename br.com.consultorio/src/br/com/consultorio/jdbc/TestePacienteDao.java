@@ -5,7 +5,7 @@ import java.util.Scanner;
 import br.com.consultorio.jdbc.dao.PacienteDao;
 import br.com.consultorio.model.Paciente;
 
-public class TesteUsuarioDao {
+public class TestePacienteDao {
 
 	public static void main(String[] args) {
 		
