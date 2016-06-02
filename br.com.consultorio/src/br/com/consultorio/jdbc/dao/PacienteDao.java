@@ -63,6 +63,22 @@ public class PacienteDao {
 		
 	}
 	
+	public void remover(Paciente paciente){
+		
+		try{
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement("delete from paciente where id=?");
+			// seta os valores
+			stmt.setLong(1, paciente.getId());
+
+			// executa
+			stmt.execute();
+			stmt.close();
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	public List<Paciente> getLista(){
 		
 		try {
@@ -74,7 +90,7 @@ public class PacienteDao {
 			while (resultado.next()) {
 				// criando o objeto Paciente
 				Paciente paciente = new Paciente();
-				paciente.setId(resultado.getLong("id"));
+				paciente.setId(resultado.getInt("id"));
 				paciente.setNome(resultado.getString("nome"));
 				paciente.setRg(resultado.getString("rg"));
 				paciente.setCpf(resultado.getString("cpf"));
