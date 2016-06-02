@@ -18,7 +18,7 @@ public class TesteLista {
 			System.out.println("rg: " + paciente.getRg());
 			System.out.println("cpf: " + paciente.getCpf());
 			System.out.println("sexo: " + paciente.getSexo());
-			System.out.println("______________________________");
+			System.out.println("_____________________________");
 
 		}
 	}
